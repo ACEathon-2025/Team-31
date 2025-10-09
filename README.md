@@ -12,7 +12,7 @@ It allows users to record daily expenses, track spending, and plan savings easil
 	•	Set and check savings goals
 	•	Clean and easy-to-use interface
 
-  Technologies Used
+  Languages Used
 	•	HTML
 	•	CSS
 	•	JavaScript
