@@ -1,0 +1,137 @@
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Body === */
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;         /* Larger base font */
+  line-height: 1.6;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Gradient background */
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Headings === */
+h1 {
+  font-size: 2.5rem;   /* ~40px */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2rem;     /* ~32px */
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.5rem;   /* ~24px */
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* === Paragraphs and Labels === */
+p, label {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* === Forms === */
+input, select, textarea {
+  font-size: 1.1rem;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin: 8px 0;
+  width: 100%;
+}
+
+button {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+  background: #ff4757;
+  transform: scale(1.05);
+}
+
+/* === Navigation Bar === */
+nav {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #ffeb3b;
+  transform: scale(1.1);
+}
+
+/* === Cards (Dashboard, Goals, Savings) === */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* === Achievements / Leaderboard === */
+.achievement, .leaderboard-entry {
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.5);
+}
+
+/* === Animations === */
+.fade-in {
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
