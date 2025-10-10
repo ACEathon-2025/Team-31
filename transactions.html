@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Transactions - Student Budget Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="transactions">
+  <nav>
+    <h2>Student Budget Planner</h2>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="transactions.html" class="active">Transactions</a></li>
+      <li><a href="goals.html">Goals</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>Transactions</h1>
+      <div class="small">Add income or expense</div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input id="desc" type="text" placeholder="Description (e.g., Lunch)" />
+        <input id="amt" type="number" placeholder="Amount (₹)" />
+        <select id="type">
+          <option value="expense">Expense</option>
+          <option value="income">Income</option>
+        </select>
+        <button id="addTrans">Add</button>
+      </div>
+
+      <ul id="expenseList" class="list" style="margin-top:12px;"></ul>
+    </div>
+  </div>
+
+  <footer>Track smart • Save more</footer>
+  <script src="script.js"></script>
+</body>
+</html>
