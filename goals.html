@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Goals - Student Budget Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="goals">
+  <nav>
+    <h2>Student Budget Planner</h2>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="transactions.html">Transactions</a></li>
+      <li><a href="goals.html" class="active">Goals</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>Goals</h1>
+      <div class="small">Save for things that matter</div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input id="goalName" type="text" placeholder="Goal (e.g., New Phone)" />
+        <input id="goalTarget" type="number" placeholder="Target amount (₹)" />
+        <button id="addGoalBtn">Create Goal</button>
+      </div>
+
+      <ul id="goalList" class="list" style="margin-top:12px;"></ul>
+    </div>
+  </div>
+
+  <footer>Dream it • Plan it • Save it</footer>
+  <script src="script.js"></script>
+</body>
+</html>
