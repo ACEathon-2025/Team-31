@@ -1,137 +1,98 @@
-/* === Global Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* style.css - very simple, pleasant styling for the whole site */
+
+:root{
+  --bg1: #071029;
+  --bg2: #0f172a;
+  --accent: #00c6ff;
+  --card: rgba(255,255,255,0.04);
+  --glass: rgba(255,255,255,0.03);
+  --text: #f5fbff;
+  --muted: #cfeefe;
+  --radius: 12px;
+  --maxw: 960px;
 }
 
-/* === Body === */
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;         /* Larger base font */
-  line-height: 1.6;
-  background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Gradient background */
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* reset */
+*{box-sizing:border-box;margin:0;padding:0;font-family: 'Montserrat', system-ui, Arial;}
+
+/* page background */
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-bottom:80px;
 }
 
-/* === Headings === */
-h1 {
-  font-size: 2.5rem;   /* ~40px */
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 20px;
+/* nav */
+nav{
+  width:100%;
+  background: rgba(0,0,0,0.35);
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+nav h2{font-size:1rem;}
+nav ul{list-style:none;display:flex;gap:10px;}
+nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:8px;}
+nav a.active, nav a:hover{background:var(--card);color:var(--accent);}
+
+/* main container */
+.container{
+  width:92%;
+  max-width:var(--maxw);
+  margin-top:28px;
 }
 
-h2 {
-  font-size: 2rem;     /* ~32px */
-  font-weight: 600;
-  margin-bottom: 15px;
+/* card */
+.card{
+  background:var(--card);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
-h3 {
-  font-size: 1.5rem;   /* ~24px */
-  font-weight: 500;
-  margin-bottom: 10px;
+/* grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
 }
 
-/* === Paragraphs and Labels === */
-p, label {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
+/* text helpers */
+.small{font-size:0.9rem;color:var(--muted);}
 
-/* === Forms === */
-input, select, textarea {
-  font-size: 1.1rem;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  margin: 8px 0;
-  width: 100%;
+/* inputs & buttons */
+input[type="text"], input[type="number"], select{
+  padding:10px;border-radius:8px;border:none;background:var(--glass);color:var(--text);
+  min-width:140px;
 }
-
-button {
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 12px 20px;
-  background: #ff6b6b;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+button{
+  background:var(--accent);border:none;padding:10px 12px;border-radius:8px;color:#012;
+  cursor:pointer;font-weight:700;
 }
+button.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);}
 
-button:hover {
-  background: #ff4757;
-  transform: scale(1.05);
-}
+/* list */
+.list{margin-top:12px;}
+.list li{display:flex;justify-content:space-between;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);margin-bottom:8px;align-items:center;}
 
-/* === Navigation Bar === */
-nav {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 12px 20px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  position: sticky;
-  top: 0;
-}
+/* page headings */
+.page-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.page-head h1{font-size:1.2rem;}
 
-nav a {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s, transform 0.2s;
-}
+/* login-specific */
+.login-box{max-width:420px;margin:60px auto;padding:22px;border-radius:14px;text-align:center;}
 
-nav a:hover {
-  color: #ffeb3b;
-  transform: scale(1.1);
-}
-
-/* === Cards (Dashboard, Goals, Savings) === */
-.card {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 15px 0;
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* === Achievements / Leaderboard === */
-.achievement, .leaderboard-entry {
-  padding: 15px;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.4);
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-}
-
-/* === Footer === */
-footer {
-  text-align: center;
-  padding: 15px;
-  margin-top: auto;
-  font-size: 0.9rem;
-  background: rgba(0,0,0,0.5);
-}
-
-/* === Animations === */
-.fade-in {
-  animation: fadeIn 1s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* footer */
+footer{position:fixed;bottom:8px;left:0;width:100%;text-align:center;color:rgba(255,255,255,0.6);font-size:0.85rem;}
+@media (max-width:520px){
+  .page-head{flex-direction:column;gap:10px;align-items:flex-start;}
 }
