@@ -1,117 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BudgetQuest — Dashboard</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dashboard - Student Budget Planner</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  <script src="script.js" defer></script>
 </head>
-<body class="bg-animated">
-  <nav class="topnav glass small-nav">
-    <div class="logo">Budget<span class="accent">Quest</span></div>
-    <div class="navlinks">
-      <a href="dashboard.html" class="active">Dashboard</a>
-      <a href="transactions.html">Transactions</a>
-      <a href="goals.html">Goals</a>
-      <a href="leaderboard.html">Leaderboard</a>
-      <a id="logoutBtn" href="#">Logout</a>
-    </div>
+<body data-page="dashboard">
+  <nav>
+    <h2>Student Budget Planner</h2>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="transactions.html">Transactions</a></li>
+      <li><a href="goals.html">Goals</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
   </nav>
 
-  <main class="page container">
-    <section class="hero glass hero-anim">
+  <div class="container">
+    <div class="page-head">
+      <h1 id="greet">Hello, Student</h1>
       <div>
-        <h1 id="greeting">Welcome!</h1>
-        <p id="levelLine" class="muted">Level: <span id="userLevel">1</span> • XP: <span id="userXP">0</span></p>
-        <div class="progress-outer">
-          <div id="levelProgress" class="progress-fill"></div>
-        </div>
+        <input id="incomeInput" type="number" placeholder="Monthly income (₹)" />
+        <button id="saveIncome">Save</button>
       </div>
+    </div>
 
-      <div class="hero-right">
-        <div class="ai-tip card neon">
-          <h4>AI Tip</h4>
-          <p id="aiTip">Let me analyze your expenses and suggest a plan.</p>
-        </div>
-        <div class="stat-row">
-          <div class="stat card">
-            <small>Total Balance</small>
-            <h2>₹<span id="balance">0</span></h2>
-          </div>
-          <div class="stat card">
-            <small>Monthly Spending</small>
-            <h2>₹<span id="monthlySpent">0</span></h2>
-          </div>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Total Income</h3>
+        <p id="incomeCard">₹0.00</p>
       </div>
-    </section>
-
-    <section class="split">
-      <div class="card glass">
-        <h3>Add Quick Expense / Income</h3>
-        <form id="quickForm">
-          <div class="row">
-            <select id="quickType"><option value="expense">Expense</option><option value="income">Income</option></select>
-            <select id="quickCategory"><option>Food</option><option>Transport</option><option>Shopping</option><option>Entertainment</option><option>Other</option></select>
-          </div>
-          <div class="row">
-            <input id="quickAmount" type="number" placeholder="Amount (₹)" />
-            <input id="quickDesc" type="text" placeholder="Note (optional)" />
-          </div>
-          <div class="row">
-            <button class="btn">Add</button>
-            <button id="setReminder" class="btn outline" type="button">Set Reminder</button>
-          </div>
-        </form>
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p id="expensesCard">₹0.00</p>
       </div>
-
-      <div class="card glass">
-        <h3>Expenses by Category</h3>
-        <canvas id="catChart"></canvas>
+      <div class="card">
+        <h3>Balance</h3>
+        <p id="balanceCard">₹0.00</p>
       </div>
-    </section>
+    </div>
 
-    <section class="card glass achievements">
-      <h3>Progress & Achievements</h3>
-      <div id="badgeRow" class="badge-row"></div>
-    </section>
-  </main>
+    <div class="card" style="margin-top:14px;">
+      <h3>Recent Activity</h3>
+      <ul id="recentList" class="list"></ul>
+      <div style="margin-top:12px;">
+        <a href="transactions.html" class="btn">Open Transactions</a>
+        <a href="goals.html" class="btn" style="margin-left:8px">View Goals</a>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-      // redirect to login if not logged in
-      if(!window.BQ || !window.BQ.isLoggedIn()) { window.location.href = 'index.html'; return; }
-
-      // greeting and initial render are handled by script.js (App)
-      document.getElementById('logoutBtn').addEventListener('click', e=>{
-        e.preventDefault(); window.BQ.logout();
-      });
-
-      // quick add
-      document.getElementById('quickForm').addEventListener('submit', e=>{
-        e.preventDefault();
-        const type = document.getElementById('quickType').value;
-        const category = document.getElementById('quickCategory').value;
-        const amount = parseFloat(document.getElementById('quickAmount').value) || 0;
-        const desc = document.getElementById('quickDesc').value || '';
-        if(amount <= 0) return alert('Enter valid amount');
-        window.BQ.addTransaction(desc, amount, type, category);
-        document.getElementById('quickAmount').value = ''; document.getElementById('quickDesc').value = '';
-      });
-
-      // set reminder quick
-      document.getElementById('setReminder').addEventListener('click', ()=>{
-        const mins = parseInt(prompt("Remind me in how many minutes?"));
-        if(isNaN(mins) || mins <= 0) return;
-        window.BQ.scheduleReminder(mins, "Hey! Time to log your expenses.");
-        alert('Reminder set');
-      });
-
-      // render visuals
-      window.BQ.renderAll();
-    });
-  </script>
+  <footer>Built by Shika • ACEathon 2025</footer>
+  <script src="script.js"></script>
 </body>
 </html>
+  
