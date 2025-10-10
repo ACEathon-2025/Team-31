@@ -1,80 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BudgetQuest — Login</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Login - Student Budget Planner</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-animated">
-  <main class="center-screen">
-    <div class="auth-shell glass">
-      <div class="auth-left">
-        <h1 class="brand">Budget<span class="accent">Quest</span></h1>
-        <p class="lead">Turn pocket change into progress — save, plan & level up.</p>
-        <div class="quote">“A little discipline today, a big reward tomorrow.”</div>
-      </div>
+<body data-page="login">
+  <nav>
+    <h2>Student Budget Planner</h2>
+    <ul>
+      <li><a href="login.html" class="active">Login</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+  </nav>
 
-      <div class="auth-right">
-        <!-- LOGIN -->
-        <form id="loginForm" class="form">
-          <h2>Login</h2>
-          <input id="loginEmail" type="email" placeholder="Email" required />
-          <input id="loginPassword" type="password" placeholder="Password" required />
-          <button class="btn" type="submit">Log In</button>
-          <p class="muted">New here? <span id="showSignup" class="linkish">Create account</span></p>
-        </form>
+  <div class="container">
+    <div class="login-box card">
+      <h1>Welcome 👋</h1>
+      <p class="small">Enter your name to begin</p>
 
-        <!-- SIGNUP -->
-        <form id="signupForm" class="form hidden">
-          <h2>Create account</h2>
-          <input id="signupName" type="text" placeholder="Full name" required />
-          <input id="signupEmail" type="email" placeholder="Email" required />
-          <input id="signupPassword" type="password" placeholder="Password" required />
-          <button class="btn" type="submit">Sign Up</button>
-          <p class="muted">Already have account? <span id="showLogin" class="linkish">Login</span></p>
-        </form>
-      </div>
+      <form id="loginForm" style="margin-top:12px;">
+        <input id="name" type="text" placeholder="Your name" />
+        <div style="margin-top:10px;">
+          <button type="submit">Start</button>
+        </div>
+      </form>
+
+      <p class="small" style="margin-top:12px;">This demo stores data in your browser (no password).</p>
     </div>
+  </div>
 
-    <div class="small-note">Built for ACEathon — Student Budget Planner</div>
-  </main>
-
-  <script src="script.js" defer></script>
-  <script>
-    // UI toggles (signup/login)
-    document.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('showSignup').addEventListener('click', ()=>{
-        document.getElementById('loginForm').classList.add('hidden');
-        document.getElementById('signupForm').classList.remove('hidden');
-      });
-      document.getElementById('showLogin').addEventListener('click', ()=>{
-        document.getElementById('signupForm').classList.add('hidden');
-        document.getElementById('loginForm').classList.remove('hidden');
-      });
-
-      // login handler will be wired by script.js (it exposes App.login & App.signup)
-      const loginForm = document.getElementById('loginForm');
-      loginForm.addEventListener('submit', e=>{
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-        const pwd = document.getElementById('loginPassword').value;
-        if(!email || !pwd) return alert('Enter email & password');
-        const ok = window.BQ && window.BQ.login && window.BQ.login(email,pwd);
-        if(ok) window.location.href = 'dashboard.html';
-      });
-
-      const signupForm = document.getElementById('signupForm');
-      signupForm.addEventListener('submit', e=>{
-        e.preventDefault();
-        const name = document.getElementById('signupName').value.trim();
-        const email = document.getElementById('signupEmail').value.trim().toLowerCase();
-        const pwd = document.getElementById('signupPassword').value;
-        if(!name || !email || !pwd) return alert('Fill all fields');
-        const ok = window.BQ && window.BQ.signup && window.BQ.signup(name,email,pwd);
-        if(ok) window.location.href = 'dashboard.html';
-      });
-    });
-  </script>
+  <footer>ACEathon 2025 • Team: Trial</footer>
+  <script src="script.js"></script>
 </body>
 </html>
